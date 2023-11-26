@@ -87,4 +87,10 @@ if __name__ == "__main__":
 
 
 
+# 1. TEXT -> 2. SQL REQUEST -> 3. INFERENCE -> 4. RESULT 
+                                            # -> 5. Llama-2-chat : Giving the question and the result, build a correct answer 
+                                            # -> 6. Print the generated answer
+
+
+
 

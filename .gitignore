@@ -165,3 +165,5 @@ requirements.tx
 .testsqlite.py
 Postgresql.ipynb
 LlamaIndex.ipynb
+llama.cpp
+llama
