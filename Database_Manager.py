@@ -2,10 +2,11 @@
 from db_connectors import PostgresConnector, SQLiteConnector, MysqlConnector
 from prompt_formatters import RajkumarFormatter
 from transformers import AutoTokenizer, AutoModelForCausalLM
-#from langchain.llms import CTransformers
+from chat import OpenAIChatbot
+
 
 class DatabaseManager:
-    def __init__(self, database, user, password, host, port, db_type):
+    def __init__(self, database, user, password, host, port, db_type, openai_api_key):
         self.database = database
         self.user = user
         self.password = password
@@ -16,6 +17,7 @@ class DatabaseManager:
         self.formatter = None
         self.tokenizer = AutoTokenizer.from_pretrained("NumbersStation/nsql-350M")
         self.model = AutoModelForCausalLM.from_pretrained("NumbersStation/nsql-350M")
+        self.openai_chatbot = OpenAIChatbot(api_key="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")
 
     def connect_to_database(self):
         
@@ -47,16 +49,6 @@ class DatabaseManager:
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
         self.model = AutoModelForCausalLM.from_pretrained(model_name)
 
-    # #Loading the model
-    # def load_llm():
-    #     # Load the locally downloaded model here
-    #     llm = CTransformers(
-    #         model = "llama-2-7b-chat.ggmlv3.q8_0.bin",
-    #         model_type="llama",
-    #         max_new_tokens = 512,
-    #         temperature = 0.5
-    #     )
-    #     return llm
 
     def execute_query(self, query):
         if self.formatter is None:
@@ -88,55 +80,35 @@ class DatabaseManager:
         if self.formatter is None:
             raise ValueError("Connexion avec la base de données non établie")
 
-        prompt = self.formatter.format_prompt(prompt)
-        input_ids = self.tokenizer(prompt, return_tensors="pt").input_ids
+        # Formatez la requête de l'utilisateur
+        formatted_prompt = self.formatter.format_prompt(prompt)
+
+        # Générez la requête SQL
+        input_ids = self.tokenizer(formatted_prompt, return_tensors="pt").input_ids
         generated_ids = self.model.generate(input_ids, max_length=1000)
-        output = self.tokenizer.decode(generated_ids[0], skip_special_tokens=True)
-        generated_query = 'SELECT' + output.split('SELECT')[-1]
+        generated_query = 'SELECT' + self.tokenizer.decode(generated_ids[0], skip_special_tokens=True).split('SELECT')[-1]
 
-        # Exécutez la requête dans la base de données
-        results = self.execute_query(generated_query)
+        try:
+            # Exécutez la requête dans la base de données
+            results = self.execute_query(generated_query)
 
-        print(generated_query)
-        # Affichez les résultats
-        self.display_results(results)
+            # Affichez la requête générée
+            print(f"Requête SQL générée: {generated_query}")
 
+            # Affichez les résultats
+            self.display_results(results)
 
-     
-        
-    
+            # Utilisez OpenAIChatbot pour générer une réponse en français
+            french_response = self.openai_chatbot.generate_response(prompt, str(results))
+            print(f"Réponse en Français générée: {french_response}")
 
+            # Retournez les résultats
+            return results
+        except Exception as e:
+            # Affichez l'erreur s'il y en a une
+            print(f"Erreur lors de la génération ou de l'exécution de la requête : {e}")
+            return str(e)
 
-# Salesforce : CODE 
-# Numberstation : NSQL: 350M, 6B, 3B 
-# dates 
-# 4000tokens
-
-# LLama -> NSQL-Llama-7-2B
-
-# RAG 
-
-# Text-to-SQL LLamaIndex-BDD->GeneratedAnswer
-
-# types de bases de données
-
-# fenêtre contextuelle = 4000 tokens / 1280000 tokens for OpenAI
-
-# PROMPT = SCHEMA + QUESTION + SELECT 
-# +4000 TOKENS == ERREURS (SUPÉRIEURE)
-
-# LATENCE = 2s, 
-
-# Modèles : Explanations !
-
-# NumberStations : Entreprise
-# Solutions à l'analyse de données
-
-# Text -> SQL : 
-# Text -> Code (sql, java, c, python, etc) : CodeGEN
-# NSQL : 3 tailles de modèles : 350M, 2B, 6B 
-
-# Llama: Text -> SQL
 
 
 

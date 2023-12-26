@@ -26,7 +26,7 @@ def get_database_manager():
             password = input("Faites entrer le mot de passe : ")
             host = input("Saisissez le host : ")
             port = int(input("Saisissez le port : "))
-            return DatabaseManager(database, user, password, host, port, db_type)
+            return DatabaseManager(database, user, password, host, port, db_type, "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")
 
     except ValueError as ve:
         print(f"Erreur : {ve}")
