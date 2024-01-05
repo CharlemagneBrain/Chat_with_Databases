@@ -26,10 +26,8 @@
 - [Workflow](#idea)
 - [Limitations](#limitations)
 - [Future Scope](#future_scope)
-- [Setting up a local environment](#getting_started)
+- [Getting Started](#getting_started)
 - [Usage](#usage)
-- [Technology Stack](#tech_stack)
-- [Contributing](../CONTRIBUTING.md)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgments)
 
@@ -113,21 +111,6 @@ TOYBIZ's main objective is to create an AI assistant that will enable decision-m
                    |        Print Generated Answer        |
                    |                                    |
                    +------------------------------------+
-
-1. **`database_scripts`:**
-    - **`db_connectors.py`:** Provides connectors for different databases (PostgreSQL, SQLite, MySQL) allowing the connection and execution of SQL queries.
-    - **`prompt_formatters.py`:** Contains the `RajkumarFormatter` class which formats database schemas for SQL queries.
-
-2. **`Manager`:**
-    - **`Database_Manager.py`:** Implements the `DatabaseManager` class which manages connecting to the database, initializing the model, executing queries, and retrieving and displaying results.
-
-3. **`Main.py`:**
-    - The main file that contains the application entry point. It allows the user to specify the database type, connection information, and interacts with the `DatabaseManager` class to execute SQL queries.
-
-4. **`nsql_streamlit.py`:**
-    - File intended for use with Streamlit to create a friendly user interface for the Text-to-SQL application. The interface will allow the user to connect to the database, ask questions and view results interactively.
-
-### Brief Description for the Readme:
 
 - **`db_connectors.py`:**
    - Contains connectors for PostgreSQL, SQLite and MySQL, allowing connection and execution of SQL queries.
