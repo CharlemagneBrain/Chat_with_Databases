@@ -2,7 +2,6 @@ from __future__ import annotations
 from pydantic import BaseModel
 from typing import Optional, List
 
-
 class TableColumn(BaseModel):
     """Table column."""
 
@@ -30,7 +29,7 @@ class Table(BaseModel):
     fks: Optional[List[ForeignKey]] = None
 
 
-class RajkumarFormatter:
+class SchemaFormatter:
     """RajkumarFormatter class.
 
     From https://arxiv.org/pdf/2204.00498.pdf.
@@ -85,5 +84,10 @@ class RajkumarFormatter:
         if not output_sql.lower().startswith("select"):
             output_sql = "SELECT " + output_sql.strip()
         return output_sql
+    
+   
+    
+    
+# Text -> NSQL Model -> SQL Query -> resultat -> Llama-chat(question + resultat) -> Reponse naturelle
         
 

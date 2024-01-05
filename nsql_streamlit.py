@@ -1,6 +1,6 @@
 import streamlit as st
-from Database_Manager import DatabaseManager
-from chat import OpenAIChatbot  # Ajout de l'importation d'OpenAIChatbot
+from Manager.Database_Manager import DatabaseManager
+from Testing.chat import OpenAIChatbot  # Ajout de l'importation d'OpenAIChatbot
 import warnings
 from googletrans import Translator
 
@@ -12,7 +12,19 @@ def translate_text(text, target_language='en'):
 
 warnings.filterwarnings("ignore")
 
-st.title("Text-to-SQL Interface")
+st.title("Chattez avec vos Données 🚀")
+
+st.markdown(
+    """
+    Bienvenue dans notre application de Chat ! 😊\n
+    Connectez-vous à votre **base de données** et explorez vos données de manière interactive. 📊\n
+    Cette application prend en charge les bases de données **Postgresql, SQLite et Mysql**. 
+    Posez vos questions directement en **Français**. 🇫🇷\n
+    Laissez votre curiosité guider la conversation ! 💬
+    
+    """
+)
+
 
 # Clé API OpenAI
 openai_api_key = "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"  
@@ -96,4 +108,3 @@ if st.session_state.manager is not None:
 
                 # Add an error message to the chat history
                 st.session_state.messages.append({"role": "assistant", "content": f"Erreur lors de la génération ou de l'exécution de la requête : {e}"})
-                

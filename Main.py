@@ -1,4 +1,4 @@
-from Database_Manager import DatabaseManager
+from Manager.Database_Manager import DatabaseManager
 import warnings
 
 warnings.filterwarnings("ignore")
@@ -55,41 +55,6 @@ if __name__ == "__main__":
         except Exception as e:
             print(f"Erreur lors de la connexion à la base de données : {e}")
 
-
-
-# from Database_Manager import DatabaseManager
-
-# if __name__ == "__main__":
-
-#     DB_TYPE = input("Enter database type (Postgresql, SQLite, Mysql): ")
-#     PORT = int(input("Enter port: "))
-#     DATABASE = input("Enter database: ")
-#     USER = input("Enter user: ")
-#     PASSWORD = input("Enter password: ")
-#     HOST = input("Enter host: ")
-    
-
-#     manager = DatabaseManager(DATABASE, USER, PASSWORD, HOST, PORT, PROMPT, DB_TYPE)
-#     manager.connect_to_database()
-
-#     while True:
-
-#         PROMPT = input("Enter prompt: ")
-
-#         if PROMPT == "exit":
-#             break
-#         manager.run_query()
-
-
-
-# Which newspapers published data after 1992?  
-# List of customers who have made a payment since 2004
-
-
-
-# 1. TEXT -> 2. SQL REQUEST -> 3. INFERENCE -> 4. RESULT 
-                                            # -> 5. Llama-2-chat : Giving the question and the result, build a correct answer 
-                                            # -> 6. Print the generated answer
 
 
 

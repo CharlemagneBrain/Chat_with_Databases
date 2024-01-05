@@ -161,12 +161,13 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-requirements.tx
+llama
 .testsqlite.py
 Postgresql.ipynb
 LlamaIndex.ipynb
 llama.cpp
-llama
 llama-2-7b-chat
 llama-2-7b-chat-hf
+Testing
+.vscode
 

@@ -1,8 +1,8 @@
 #database_manager.py
-from db_connectors import PostgresConnector, SQLiteConnector, MysqlConnector
-from prompt_formatters import RajkumarFormatter
+from database_scripts.db_connectors import PostgresConnector, SQLiteConnector, MysqlConnector
+from database_scripts.prompt_formatters import SchemaFormatter
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from chat import OpenAIChatbot
+from Testing.chat import OpenAIChatbot
 
 
 class DatabaseManager:
@@ -17,7 +17,7 @@ class DatabaseManager:
         self.formatter = None
         self.tokenizer = AutoTokenizer.from_pretrained("NumbersStation/nsql-350M")
         self.model = AutoModelForCausalLM.from_pretrained("NumbersStation/nsql-350M")
-        self.openai_chatbot = OpenAIChatbot(api_key="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")
+        self.openai_chatbot = OpenAIChatbot(api_key="sk-********************")
 
     def connect_to_database(self):
         
@@ -42,7 +42,7 @@ class DatabaseManager:
         print(f"Liste des Tables présentes dans la base de données: {self.tables}")
 
         db_schema = [connector.get_schema(table) for table in self.tables]
-        self.formatter = RajkumarFormatter(db_schema, db_type=self.db_type)
+        self.formatter = SchemaFormatter(db_schema, db_type=self.db_type)
 
     def initialize_model(self):
         model_name = "NumbersStation/nsql-350M"
@@ -85,7 +85,7 @@ class DatabaseManager:
 
         # Générez la requête SQL
         input_ids = self.tokenizer(formatted_prompt, return_tensors="pt").input_ids
-        generated_ids = self.model.generate(input_ids, max_length=1000)
+        generated_ids = self.model.generate(input_ids, max_length=4000)
         generated_query = 'SELECT' + self.tokenizer.decode(generated_ids[0], skip_special_tokens=True).split('SELECT')[-1]
 
         try:
@@ -109,6 +109,45 @@ class DatabaseManager:
             print(f"Erreur lors de la génération ou de l'exécution de la requête : {e}")
             return str(e)
 
+
+
+
+
+     
+        
+    
+
+
+# Salesforce : CODE 
+# Numberstation : NSQL: 350M, 6B, 3B 
+# dates 
+# 4000tokens
+
+# LLama -> NSQL-Llama-7-2B
+
+# RAG 
+
+# Text-to-SQL LLamaIndex-BDD->GeneratedAnswer
+
+# types de bases de données
+
+# fenêtre contextuelle = 4000 tokens / 1280000 tokens for OpenAI
+
+# PROMPT = SCHEMA + QUESTION + SELECT 
+# +4000 TOKENS == ERREURS (SUPÉRIEURE)
+
+# LATENCE = 2s, 
+
+# Modèles : Explanations !
+
+# NumberStations : Entreprise
+# Solutions à l'analyse de données
+
+# Text -> SQL : 
+# Text -> Code (sql, java, c, python, etc) : CodeGEN
+# NSQL : 3 tailles de modèles : 350M, 2B, 6B 
+
+# Llama: Text -> SQL
 
 
 
