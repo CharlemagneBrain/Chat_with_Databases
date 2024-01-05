@@ -42,18 +42,19 @@ TOYBIZ's main objective is to create an AI assistant that will enable decision-m
 
 
 ## 💡 Workflow <a name = "idea"></a>
-                   +------------------------------------+
-                   |                                    |
-                   |           Application               |
-                   |                                    |
-                   +------------------------------------+
+                   +------------------------------------+----------+
+                   |                                                |
+                   |     Application : TOYBIZ                       |
+                   |   Database Connection : connections            |
+                   |   informations and model initialisation        |
+                   +------------------------------------+----------+
                                 |
                                 v
-                   +------------------------------------+
-                   |                                    |
-                   |              User Input             |
-                   |(Text Prompt in French) -> Prompt in English          |
-                   +------------------+-----------------+
+                   +------------------------------------+----------------+-----+-----+
+                   |                                                                  |
+                   |              User Input                                          |  
+                   |(Text Prompt in French) -> Prompt in English by googletrans       |
+                   +------------------+-----------------+----------------+-----+-----+
                                       |
                                       v
                    +------------------+-----------------+
@@ -68,13 +69,6 @@ TOYBIZ's main objective is to create an AI assistant that will enable decision-m
                    |                                    |
                    |        SQL Request Generation        |
                    |         (Text to SQL Conversion)     |
-                   +------------------+-----------------+
-                                      |
-                                      v
-                   +------------------+-----------------+
-                   |                                    |
-                   |       Database Connection            |
-                   |       (Postgres, SQLite, Mysql)       |
                    +------------------+-----------------+
                                       |
                                       v
