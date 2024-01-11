@@ -35,17 +35,17 @@
 
 TOYBIZ's main objective is to create an AI assistant that will enable decision-makers to obtain quick and accurate answers to their business-related questions, whether in text or audio form. The aim is to simplify the decision-making process and increase the efficiency of decision-makers.
 
-- IDEAL: Supporting both text and audio inputs, TOYBIZ allows users to interact with the AI assistant in a way that suits their preferences and requirements. TOYBIZ seamlessly integrates with different database systems, including MongoDB, PostgreSQL, SQLite, and MySQL, providing versatility to users with diverse data infrastructure.
-- REALITY: TOYBIZ's current implementation includes functionalities for text-based interactions with its AI assistant. Users can pose questions related to their databases in natural language, and TOYBIZ will generate SQL queries using a language model. The system supports various database systems such as PostgreSQL, SQLite, and MySQL, enhancing flexibility and compatibility.
+- **IDEAL**: Supporting both text and audio inputs, TOYBIZ allows users to interact with the AI assistant in a way that suits their preferences and requirements. TOYBIZ seamlessly integrates with different database systems, including MongoDB, PostgreSQL, SQLite, and MySQL, providing versatility to users with diverse data infrastructure.
+- **REALITY**: TOYBIZ's current implementation includes functionalities for text-based interactions with its AI assistant. Users can pose questions related to their databases in natural language, and TOYBIZ will generate SQL queries using a language model. The system supports various database systems such as PostgreSQL, SQLite, and MySQL, enhancing flexibility and compatibility.
 
-- CONSEQUENCES: TOYBIZ accelerates the decision-making process by providing quick and accurate responses to business-related queries. The integration of a language model streamlines the interaction, enabling decision-makers to obtain insights rapidly. The current implementation focuses on text-based interactions, allowing users to articulate questions in natural language. TOYBIZ utilizes a language model to generate SQL queries, facilitating a user-friendly experience for those familiar with standard language queries. TOYBIZ's adaptability extends to supporting different database systems, including PostgreSQL, SQLite, and MySQL. This flexibility enhances compatibility with various databases commonly used in business environments.
+- **CONSEQUENCES**: TOYBIZ accelerates the decision-making process by providing quick and accurate responses to business-related queries. The integration of a language model streamlines the interaction, enabling decision-makers to obtain insights rapidly. The current implementation focuses on text-based interactions, allowing users to articulate questions in natural language. TOYBIZ utilizes a language model to generate SQL queries, facilitating a user-friendly experience for those familiar with standard language queries. TOYBIZ's adaptability extends to supporting different database systems, including PostgreSQL, SQLite, and MySQL. This flexibility enhances compatibility with various databases commonly used in business environments.
 
 
 ## 💡 Workflow <a name = "idea"></a>
             +------------------------------------+---------------------------+
             |                                    |                           |
             |     Application : TOYBIZ           |   Database Connection :   |
-            |   Database Interaction & Model     |       connections          |
+            |   Database Interaction & Model     |       connections         |
             |   Initialization                   |   Information & Model     |
             |                                    |   Initialization          |
             +----------------------+-------------+---------------------------+
@@ -60,52 +60,52 @@ TOYBIZ's main objective is to create an AI assistant that will enable decision-m
                                    |
                                    v
             +----------------------+---------------------------+
-            |                                                      |
-            |         Open-source Finetuned LLM                     |
-            |        (NumbersStation/nsql-350M)                    |
-            |                                                      |
+            |                                                   |
+            |         Open-source Finetuned LLM                 |
+            |        (NumbersStation/nsql-350M)                 |
+            |                                                   |
             +----------------------+---------------------------+
                                    |
                                    v
             +----------------------+---------------------------+
-            |                                                      |
-            |         SQL Request Generation                       |
-            |         (Text to SQL Conversion)                     |
+            |                                                  |
+            |         SQL Request Generation                   |
+            |         (Text to SQL Conversion)                 |
             +----------------------+---------------------------+
                                    |
                                    v
             +----------------------+---------------------------+
-            |                                                      |
-            |        Execute SQL Query                             |
-            |        (Interaction with Database)                   |
+            |                                                   |
+            |        Execute SQL Query                          |
+            |        (Interaction with Database)                |
             +----------------------+---------------------------+
                                    |
                                    v
             +----------------------+---------------------------+
-            |                                                      |
-            |           Query Results                              |
-            |           (Data from Database)                        |
+            |                                                  |
+            |           Query Results                          |
+            |           (Data from Database)                   |
             +----------------------+---------------------------+
                                    |
                                    v
             +----------------------+---------------------------+
-            |                                                      |
-            |   GPT-3 Language Model Inference                     |
-            |         (Question + Result)                          |
+            |                                                  |
+            |   GPT-3 Language Model Inference                 |
+            |         (Question + Result)                      |
             +----------------------+---------------------------+
                                    |
                                    v
             +----------------------+---------------------------+
-            |                                                      |
-            |      Constructed Answer                             |
-            |    (Generated by GPT-3)                              |
+            |                                                  |
+            |      Constructed Answer (Generated by GPT-3)     |
+            |                                                  |
             +----------------------+---------------------------+
                                    |
                                    v
             +----------------------+---------------------------+
-            |                                                      |
-            |       Print Generated Answer                         |
-            |                                                      |
+            |                                                  |
+            |       Print Generated Answer                     |
+            |                                                  |
             +----------------------+---------------------------+
 
 
