@@ -51,12 +51,12 @@ TOYBIZ's main objective is to create an AI assistant that will enable decision-m
             +----------------------+-------------+---------------------------+
                                    |
                                    v
-            +----------------------+---------------------------+-------------+-------------+
-            |                                                      |             |             |
-            |                   User Input                         |             |             |
-            |   (Text Prompt in French) -> Prompt in English        |             |             |
-            |   Translated by googletrans                            |             |             |
-            +----------------------+---------------------------+-------------+-------------+
+            +----------------------+---------------------------+
+            |                                                  |
+            |                   User Input                     |
+            |   (Text Prompt in French) -> Prompt in English   | 
+            |   Translated by googletrans                      |
+            +----------------------+---------------------------+
                                    |
                                    v
             +----------------------+---------------------------+
