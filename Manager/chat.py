@@ -24,3 +24,18 @@ class OpenAIChatbot:
             ]
         )
         return response.choices[0].message.content
+
+# api_key = "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"  
+# chatbot = OpenAIChatbot(api_key)
+
+# question = "Which newspapers published data after 1992 ?"
+
+# database_answer = """ 0    Nutritional composition of six muscles
+# 1    Plasma concentration of dihydro-vitamin K
+# 2    Comparison of Two Methods of Fiber Analysis
+# 3                                   Quaker Oats Co. 02
+# 4    Nutrient Composition of Carl Buddig
+#  """
+
+# response = chatbot.generate_response(question, database_answer)
+# print(response)
