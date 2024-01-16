@@ -2,7 +2,7 @@
 from database_scripts.db_connectors import PostgresConnector, SQLiteConnector, MysqlConnector
 from database_scripts.prompt_formatters import SchemaFormatter
 from transformers import AutoTokenizer, AutoModelForCausalLM
-from Testing.chat import OpenAIChatbot
+from Manager.chat import OpenAIChatbot
 
 
 class DatabaseManager:

@@ -1,6 +1,6 @@
 import streamlit as st
 from Manager.Database_Manager import DatabaseManager
-from Testing.chat import OpenAIChatbot  # Ajout de l'importation d'OpenAIChatbot
+from Manager.chat import OpenAIChatbot  # Ajout de l'importation d'OpenAIChatbot
 import warnings
 from googletrans import Translator
 
